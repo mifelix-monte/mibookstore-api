@@ -25,12 +25,13 @@ public class CartController {
         return cartService.getAll();
     }
 
-//    @PostMapping("/add")
-//    public Cart addItem(@RequestParam Integer cartId, Integer bookId, CartRequest cartRequest){
-//        return cartService.addItem(cartId, bookId, cartRequest);
-//    }
+    @PutMapping("/update")
+    public Cart updateCart(@RequestParam Integer cartId, Integer bookId, CartRequest cartRequest) {
+        return cartService.updateCart(cartId, bookId, cartRequest);
+    }
 
-    @PutMapping
+
+    @PutMapping("/remove")
     public Cart removeItem(@RequestParam Integer cartId, Integer bookId){
        return cartService.removeItem(cartId, bookId);
     }

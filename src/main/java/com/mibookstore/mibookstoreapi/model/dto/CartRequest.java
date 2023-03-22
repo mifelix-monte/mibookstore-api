@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Setter
 public class CartRequest {
 
-    @Autowired
-    Book book;
-
     private Integer cartItemQuantity;
 
 }

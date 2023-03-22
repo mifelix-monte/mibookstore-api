@@ -5,9 +5,16 @@ import com.mibookstore.mibookstoreapi.model.CartBook;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CartBookRepository extends JpaRepository<CartBook, Integer> {
 
-    CartBook findByCartId(Integer id);
+
+//    List<CartBook> findAllByCartId(Integer cartId);
+
+//    CartBook findBookById(Integer bookId);
+
+    CartBook findByCartIdAndBookId(Integer cartId, Integer bookId);
 
 }
