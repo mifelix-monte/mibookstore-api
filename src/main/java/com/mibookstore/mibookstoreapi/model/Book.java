@@ -4,20 +4,18 @@ import com.fasterxml.jackson.annotation.*;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
-//FAZENDO O MAPEAMENTO DE UMA ENTIDADE
-
 @Entity
 @Getter
 @Setter
 @Table(name = "books")
+@NoArgsConstructor
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
@@ -26,6 +24,7 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String title;
     private String author;
     private BigDecimal price;
@@ -35,10 +34,7 @@ public class Book implements Serializable {
 
     @JsonIgnore
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<CartBook> carts = new ArrayList<>();
-
-    public Book(){}
-
+    private List<CartBook> cartBooks = new ArrayList<>();
     public Book(BookRequest bookRequest) {
         this.title = bookRequest.getTitle();
         this.author = bookRequest.getAuthor();

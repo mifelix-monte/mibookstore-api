@@ -4,45 +4,50 @@ import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
 import com.mibookstore.mibookstoreapi.service.BookService;
 import com.mibookstore.mibookstoreapi.service.ipml.BookServiceIpml;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/book")
 public class BookController {
 
     @Autowired
-    BookServiceIpml bookServiceIpml;
-
-    @Autowired
     BookService bookService;
 
     @PostMapping
-    public Book createBook(@RequestBody BookRequest bookRequest){
-        return bookServiceIpml.createBook(bookRequest);
+    public ResponseEntity<Book> createBook(@Valid @RequestBody BookRequest bookRequest){
+
+        return ResponseEntity.status(CREATED).body(bookService.createBook(bookRequest));
     }
 
     @GetMapping
-    public Page<Book> getAll(@RequestParam (required = false, defaultValue = "0") int page,
+    public ResponseEntity<Page<Book>> getAll(@RequestParam (required = false, defaultValue = "0") int page,
                              @RequestParam (required = false, defaultValue = "3") int size){
 
-        return bookService.getAll(page, size);
+        return ResponseEntity.ok(bookService.getAll(page, size));
     }
 
     @GetMapping("/{id}")
-    public Book getById(@PathVariable Integer id){
-        return bookServiceIpml.getById(id);
+    public ResponseEntity<Book> getById(@PathVariable Integer id){
+
+        return ResponseEntity.ok(bookService.getById(id));
     }
 
     @PutMapping
-    public Book updateBook(@RequestParam Integer id, BookRequest bookRequest){
-        return bookServiceIpml.updateBook(id, bookRequest);
+    public ResponseEntity<Book> updateBook(@RequestParam Integer id, BookRequest bookRequest){
+        return ResponseEntity.ok(bookService.updateBook(id, bookRequest));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBook(@PathVariable Integer id){
-        bookServiceIpml.deleteBook(id);
+    public ResponseEntity deleteBook(@PathVariable Integer id){
+        bookService.deleteBook(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

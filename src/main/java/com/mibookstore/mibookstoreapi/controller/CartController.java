@@ -1,12 +1,19 @@
 package com.mibookstore.mibookstoreapi.controller;
 
 import com.mibookstore.mibookstoreapi.model.Cart;
+import com.mibookstore.mibookstoreapi.model.Client;
 import com.mibookstore.mibookstoreapi.model.dto.CartRequest;
 import com.mibookstore.mibookstoreapi.service.CartService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+
+import static org.springframework.http.HttpStatus.CREATED;
 
 @RestController
 @RequestMapping("/cart")
@@ -16,29 +23,42 @@ public class CartController {
     CartService cartService;
 
     @PostMapping
-    public Cart addItem(@RequestParam Integer clientId, Integer bookId, CartRequest cartRequest){
-        return cartService.addItem(clientId, bookId, cartRequest);
+    public ResponseEntity<Cart> createCart(@Valid @RequestParam Integer clientId, Integer bookId, CartRequest cartRequest) {
+        return ResponseEntity.status(CREATED).body(cartService.addItem(clientId, bookId, cartRequest));
     }
 
     @GetMapping
-    public List<Cart> getAll(){
-        return cartService.getAll();
+    public ResponseEntity<Page<Cart>> getAll(@RequestParam (required = false, defaultValue = "0") int page,
+                                               @RequestParam  (required = false, defaultValue = "3") int size) {
+
+        return ResponseEntity.ok(cartService.getAll(page, size));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Cart> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(cartService.getById(id));
     }
 
     @PutMapping("/update")
-    public Cart updateCart(@RequestParam Integer cartId, Integer bookId, CartRequest cartRequest) {
-        return cartService.updateCart(cartId, bookId, cartRequest);
+    public ResponseEntity<Cart> updateCart(@RequestParam Integer cartId, Integer bookId, CartRequest cartRequest) {
+        return ResponseEntity.ok(cartService.updateCart(cartId, bookId, cartRequest));
     }
 
-
     @PutMapping("/remove")
-    public Cart removeItem(@RequestParam Integer cartId, Integer bookId){
-       return cartService.removeItem(cartId, bookId);
+    public ResponseEntity<Cart> removeItem(@RequestParam Integer cartId, Integer bookId){
+       return ResponseEntity.ok(cartService.removeItem(cartId, bookId));
+    }
+
+    @PutMapping("/clear/{id}")
+    public ResponseEntity<Cart> clearCart(@PathVariable Integer id) {
+        return ResponseEntity.ok(cartService.clearCart(id));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCart(@PathVariable Integer id){
+    public ResponseEntity deleteCart(@PathVariable Integer id){
         cartService.deleteCart(id);
+
+        return ResponseEntity.noContent().build();
     }
 
 }

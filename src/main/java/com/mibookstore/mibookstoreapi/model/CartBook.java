@@ -2,6 +2,7 @@ package com.mibookstore.mibookstoreapi.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
@@ -9,6 +10,7 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @Table(name = "cart_books")
 public class CartBook {
 
@@ -25,8 +27,6 @@ public class CartBook {
 
     @Column(name = "item_quantity")
     private Integer itemQuantity;
-
-    private CartBook() {}
 
     public CartBook(Cart cart, Book book) {
         this.cart = cart;

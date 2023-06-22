@@ -4,6 +4,7 @@ import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
 import com.mibookstore.mibookstoreapi.repository.BookRepository;
 import com.mibookstore.mibookstoreapi.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -11,12 +12,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BookServiceIpml implements BookService {
-
-    private final BookRepository bookRepository;
-
-    public BookServiceIpml(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    @Autowired
+    BookRepository bookRepository;
 
     public Book createBook(BookRequest bookRequest){
         Book book = new Book(bookRequest);
