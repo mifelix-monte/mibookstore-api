@@ -16,14 +16,19 @@ This project is a backend API for an online bookstore, where you can do CRUD ope
 ## [](#technology):rocket: Technology
 - Java
 - Spring Framework
+- Maven
 - InteliJ IDEA
 
 ## [](#prerequisites):ballot_box_with_check: Prerequisites
 -   [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
+-   [Maven](https://maven.apache.org/install.html)
 
 ## [](#getting-started):up: Getting started
 
 -  Clone this repo
+-  cd cloned_folder
+-  mvn clean install
+-  mvn spring-boot:run
 
 ----------
 
