@@ -1,13 +1,6 @@
 <h3 align="center">
   Livraria Online
 </h3>
-<p align="center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/brunoleomont/desafio-tecnico-js-ada.svg">
-
-  <a href="https://github.com/brunoleomont/desafio-tecnico-js-ada/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/brunoleomont/desafio-tecnico-js-ada.svg">
-  </a>
-</p>
 
 <p align="center">
   <a href="#book-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
