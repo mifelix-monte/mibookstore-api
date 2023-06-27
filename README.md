@@ -2,10 +2,6 @@
   Livraria Online
 </h3>
 
-<div align="center">
-<img src="https://media.giphy.com/media/128MHrlrHNwwU0/giphy.gif />
-</div>
-
 <p align="center">
   <a href="#book-description">Description</a> |
   <a href="#rocket-technology">Technology</a> |
