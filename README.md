@@ -2,7 +2,7 @@
   Livraria Online
 </h3>
 
-<div> align="center">
+<div align="center">
 <img src="https://media.giphy.com/media/128MHrlrHNwwU0/giphy.gif />
 </div>
 
