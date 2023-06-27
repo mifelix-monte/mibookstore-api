@@ -3,10 +3,10 @@
 </h3>
 
 <p align="center">
-  <a href="#book-description">Description</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#rocket-technology">Technology</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#ballot_box_with_check-prerequisites">Prerequisites</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#up-getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#description">Description</a> |
+  <a href="#technology">Technology</a> |
+  <a href="#prerequisites">Prerequisites</a> |
+  <a href="#getting-started">Getting started</a>
 </p>
 
 ## [](#description)📖 Description
