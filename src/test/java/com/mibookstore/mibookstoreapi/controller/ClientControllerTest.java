@@ -1,6 +1,5 @@
-package com.mibookstore.mibookstoreapi.controllerTest;
+package com.mibookstore.mibookstoreapi.controller;
 
-import com.mibookstore.mibookstoreapi.controller.ClientController;
 import com.mibookstore.mibookstoreapi.model.Client;
 import com.mibookstore.mibookstoreapi.model.dto.ClientRequest;
 import com.mibookstore.mibookstoreapi.service.ClientService;

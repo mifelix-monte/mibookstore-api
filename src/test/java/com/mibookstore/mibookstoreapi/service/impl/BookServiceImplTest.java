@@ -1,4 +1,4 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
 import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
@@ -14,8 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.*;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,10 +22,10 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
-class BookServiceIpmlTest {
+class BookServiceImplTest {
 
     @InjectMocks
-    private BookServiceIpml service;
+    private BookServiceImpl service;
 
     @Mock
     private BookRepository repository;
@@ -42,7 +40,7 @@ class BookServiceIpmlTest {
     }
 
     @Test
-    void whenCreateBookTheReturnSuccess() {
+    void whenCreateBookThenReturnCreated() {
         when(repository.save(any())).thenReturn(book);
 
         Book response = service.createBook(bookRequest);
@@ -58,7 +56,7 @@ class BookServiceIpmlTest {
     }
 
     @Test
-    void whenGetAllThenReturnAnListOfUsers() {
+    void whenGetAllThenReturnAListOfUsers() {
         Page<Book> books = Mockito.mock(Page.class);
         PageRequest pageRequest = PageRequest.of(1, 1, Sort.Direction.ASC,"title");
 
@@ -70,7 +68,7 @@ class BookServiceIpmlTest {
     }
 
     @Test
-    void whenGetByIdThenReturnAnBookInstance() {
+    void whenGetByIdThenReturnABookInstance() {
         when(repository.findById(anyInt())).thenReturn(Optional.ofNullable(book));
 
         Book response = service.getById(book.getId());
@@ -83,7 +81,7 @@ class BookServiceIpmlTest {
     }
 
     @Test
-    void whenUpdateBookTheReturnSuccess() {
+    void whenUpdateBookThenReturnOk() {
         when(repository.findById(anyInt())).thenReturn(Optional.ofNullable(book));
         when(repository.save(any())).thenReturn(book);
 

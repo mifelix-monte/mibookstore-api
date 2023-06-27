@@ -3,13 +3,11 @@ package com.mibookstore.mibookstoreapi.controller;
 import com.mibookstore.mibookstoreapi.model.Client;
 import com.mibookstore.mibookstoreapi.model.dto.ClientRequest;
 import com.mibookstore.mibookstoreapi.service.ClientService;
-import com.mibookstore.mibookstoreapi.service.ipml.ClientServiceIpml;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import static org.springframework.http.HttpStatus.CREATED;
 

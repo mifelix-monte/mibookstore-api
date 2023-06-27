@@ -1,6 +1,5 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
-import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.Client;
 import com.mibookstore.mibookstoreapi.model.dto.ClientRequest;
 import com.mibookstore.mibookstoreapi.repository.ClientRepository;
@@ -24,10 +23,10 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 @SpringBootTest
-class ClientServiceIpmlTest {
+class ClientServiceImplTest {
 
     @InjectMocks
-    private ClientServiceIpml service;
+    private ClientServiceImpl service;
 
     @Mock
     private ClientRepository repository;
@@ -43,7 +42,7 @@ class ClientServiceIpmlTest {
     }
 
     @Test
-    void createClient() {
+    void whenCreateClienttThenReturnCreated() {
         when(repository.save(any())).thenReturn(client);
 
         Client response = service.createClient(clientRequest);
@@ -55,11 +54,11 @@ class ClientServiceIpmlTest {
         assertEquals(client.getCpf(), response.getCpf());
         assertEquals(client.getEmail(), response.getEmail());
         assertEquals(client.getAddress(), response.getAddress());
-        assertEquals(client.getCell(), response.getCell());
+        assertEquals(client.getPhone(), response.getPhone());
     }
 
     @Test
-    void getAll() {
+    void whenGetAllThenReturnAListOfClients() {
         Page<Client> clients = Mockito.mock(Page.class);
         PageRequest pageRequest = PageRequest.of(1, 1, Sort.Direction.ASC,"name");
 
@@ -71,7 +70,7 @@ class ClientServiceIpmlTest {
     }
 
     @Test
-    void getById() {
+    void whenGetByIdThenReturnAClientInstance() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(client));
 
         Client response = service.getById(client.getId());
@@ -82,7 +81,7 @@ class ClientServiceIpmlTest {
     }
 
     @Test
-    void updateClient() {
+    void whenUpdateClientThenReturnOk() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(client));
         when(repository.save(any())).thenReturn(client);
 
@@ -95,11 +94,11 @@ class ClientServiceIpmlTest {
         assertEquals(client.getCpf(), response.getCpf());
         assertEquals(client.getEmail(), response.getEmail());
         assertEquals(client.getAddress(), response.getAddress());
-        assertEquals(client.getCell(), response.getCell());
+        assertEquals(client.getPhone(), response.getPhone());
     }
 
     @Test
-    void deleteClient() {
+    void deleteClientWithSuccess() {
         when(repository.findById(anyInt())).thenReturn(Optional.ofNullable(client));
         doNothing().when(repository).delete(client);
         service.deleteClient(client.getId());
@@ -113,7 +112,7 @@ class ClientServiceIpmlTest {
         client.setCpf("47884425977");
         client.setEmail("fabiana@hotmail.com");
         client.setAddress("Rua Pico do Baú, 78, Altos da Serra - São José dos Campos/SP");
-        client.setCell("11981475521");
+        client.setPhone("11981475521");
 
         clientRequest = new ClientRequest("Fabiana da Silva", "47884425977", "fabiana@hotmail.com",
                 "Rua Pico do Baú, 78, Altos da Serra - São José dos Campos/SP", "11981475521");

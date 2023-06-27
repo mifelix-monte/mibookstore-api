@@ -1,4 +1,4 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
 import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
@@ -11,10 +11,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookServiceIpml implements BookService {
+public class BookServiceImpl implements BookService {
     @Autowired
     BookRepository bookRepository;
 
+    @Override
     public Book createBook(BookRequest bookRequest){
         Book book = new Book(bookRequest);
         return bookRepository.save(book);

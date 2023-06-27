@@ -2,12 +2,13 @@ package com.mibookstore.mibookstoreapi.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.Data;
 import lombok.Getter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Getter
+@Data
 @Embeddable
 public class CartBookId implements Serializable {
 

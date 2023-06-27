@@ -13,5 +13,5 @@ public class ClientRequest {
     private String cpf;
     private String email;
     private String address;
-    private String cell;
+    private String phone;
 }

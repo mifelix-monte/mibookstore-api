@@ -1,4 +1,4 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
 import com.mibookstore.mibookstoreapi.model.*;
 import com.mibookstore.mibookstoreapi.model.dto.CartRequest;
@@ -15,7 +15,6 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -28,10 +27,10 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 @SpringBootTest
-class CartServiceIpmlTest {
+class CartServiceImplTest {
 
     @InjectMocks
-    CartServiceIpml service;
+    CartServiceImpl service;
 
     @Mock
     CartRepository repository;
@@ -64,7 +63,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void addItem() {
+    void whenAddItemOnCartThenReturnCreated() {
         when(clientService.getById(any())).thenReturn(client);
         when(bookService.getById(any())).thenReturn(book);
         when(repository.save(any())).thenReturn(cart);
@@ -76,7 +75,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void updateCart() {
+    void whenUpdateCartThenReturnOk() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(cart));
         when(bookService.getById(any())).thenReturn(book);
         when(cartBookRepository.findByCartIdAndBookId(any(), any())).thenReturn(cartBook);
@@ -89,7 +88,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void updateCartNull() {
+    void whenUpdateANullCartThenReturnOk() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(cart));
         when(bookService.getById(any())).thenReturn(book);
         when(cartBookRepository.findByCartIdAndBookId(any(), any())).thenReturn(null);
@@ -101,7 +100,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void getAll() {
+    void whenGetAllThenReturnAListOfCarts() {
         Page<Cart> carts = Mockito.mock(Page.class);
         PageRequest pageRequest = PageRequest.of(1, 1);
 
@@ -113,7 +112,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void getById() {
+    void whenGetByIdThenReturnACartInstance() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(cart));
 
         Cart response = service.getById(cart.getId());
@@ -123,7 +122,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void removeItem() {
+    void whenRemoveItemByIdThenReturnACartWithoutThisItem() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(cart));
         when(bookService.getById(any())).thenReturn(book);
         when(cartBookRepository.findByCartIdAndBookId(any(), any())).thenReturn(cartBook);
@@ -148,7 +147,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void clearCart() {
+    void whenClearCartThenReturnACartEmpty() {
         when(repository.findById(any())).thenReturn(Optional.ofNullable(cart));
         when(repository.save(any())).thenReturn(cart);
 
@@ -158,7 +157,7 @@ class CartServiceIpmlTest {
     }
 
     @Test
-    void deleteCart() {
+    void deleteCartWithSuccess() {
         when(repository.findById(anyInt())).thenReturn(Optional.ofNullable(cart));
         doNothing().when(repository).delete(cart);
         service.deleteCart(client.getId());
@@ -172,7 +171,7 @@ class CartServiceIpmlTest {
         client.setCpf("47884425977");
         client.setEmail("fabiana@hotmail.com");
         client.setAddress("Rua Pico do Baú, 78, Altos da Serra - São José dos Campos/SP");
-        client.setCell("11981475521");
+        client.setPhone("11981475521");
 
         book = new Book();
         book.setId(1);

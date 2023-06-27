@@ -1,4 +1,4 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
 import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.Cart;
@@ -13,24 +13,22 @@ import com.mibookstore.mibookstoreapi.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
 @Service
-public class CartServiceIpml implements CartService {
+public class CartServiceImpl implements CartService {
 
     @Autowired
     CartRepository cartRepository;
     @Autowired
+    CartBookRepository cartBookRepository;
+    @Autowired
     ClientService clientService;
     @Autowired
     BookService bookService;
-    @Autowired
-    CartBookRepository cartBookRepository;
 
     @Override
     public Cart addItem(Integer clientId, Integer bookId, CartRequest cartRequest) {
@@ -84,19 +82,18 @@ public class CartServiceIpml implements CartService {
 
     @Override
     public Cart removeItem(Integer cartId, Integer bookId) {
-        final Integer ONE_ITEM_QUANTITY = 1;
         Cart cart = cartRepository.findById(cartId).orElseThrow();
         Book book = bookService.getById(bookId);
         CartBook cartBook = cartBookRepository.findByCartIdAndBookId(cartId, bookId);
 
-        if (cartBook.getItemQuantity() > ONE_ITEM_QUANTITY) {
-            cartBook.setItemQuantity(cartBook.getItemQuantity() - ONE_ITEM_QUANTITY);
-        } else if (Objects.equals(cartBook.getItemQuantity(), ONE_ITEM_QUANTITY)) {
+        if (cartBook.getItemQuantity() > 1) {
+            cartBook.setItemQuantity(cartBook.getItemQuantity() - 1);
+        } else if (Objects.equals(cartBook.getItemQuantity(), 1)) {
             cart.getCartBooks().remove(cartBook);
         }
 
-        book.setStockQuantity(book.getStockQuantity() + ONE_ITEM_QUANTITY);
-        cart.setCartItemQuantity(cart.getCartItemQuantity() - ONE_ITEM_QUANTITY);
+        book.setStockQuantity(book.getStockQuantity() + 1);
+        cart.setCartItemQuantity(cart.getCartItemQuantity() - 1);
         cart.setAmount(cart.getAmount().subtract(book.getPrice()));
 
         return cartRepository.save(cart);

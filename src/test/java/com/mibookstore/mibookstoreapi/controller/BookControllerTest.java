@@ -1,6 +1,5 @@
-package com.mibookstore.mibookstoreapi.controllerTest;
+package com.mibookstore.mibookstoreapi.controller;
 
-import com.mibookstore.mibookstoreapi.controller.BookController;
 import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
 import com.mibookstore.mibookstoreapi.service.BookService;
@@ -11,7 +10,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.math.BigDecimal;
 
@@ -32,7 +30,6 @@ public class BookControllerTest {
 
     Book book;
 
-    //para cada teste que eu executar, ele irá inicializar as variáveis citadas abaixo para eu usar dentro dos testes:
     @BeforeEach
     public void setup() {
         bookRequest = new BookRequest("A culpa é das Estrelas", "John Green", new BigDecimal("40.90"), 263, 5);

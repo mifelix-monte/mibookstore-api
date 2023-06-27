@@ -1,17 +1,18 @@
 package com.mibookstore.mibookstoreapi.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mibookstore.mibookstoreapi.model.dto.ClientRequest;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-
 
 @Entity
 @Getter
@@ -35,13 +36,14 @@ public class Client {
     @NotBlank
     private String address;
     @NotBlank
-    private String cell;
+    private String phone;
 
     public Client (ClientRequest clientRequest) {
         this.name = clientRequest.getName();
         this.cpf = clientRequest.getCpf();
         this.email = clientRequest.getEmail();
         this.address = clientRequest.getAddress();
-        this.cell = clientRequest.getCell();
+        this.phone = clientRequest.getPhone();
     }
 }
+

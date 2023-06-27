@@ -1,4 +1,4 @@
-package com.mibookstore.mibookstoreapi.service.ipml;
+package com.mibookstore.mibookstoreapi.service.impl;
 
 import com.mibookstore.mibookstoreapi.model.Client;
 import com.mibookstore.mibookstoreapi.model.dto.ClientRequest;
@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class ClientServiceIpml implements ClientService {
+public class ClientServiceImpl implements ClientService {
 
     @Autowired
     ClientRepository clientRepository;
 
+    @Override
     public Client createClient(ClientRequest clientRequest){
         Client client = new Client(clientRequest);
         return clientRepository.save(client);
     }
-
     @Override
     public Page<Client> getAll(int page, int size) {
 
@@ -43,7 +43,7 @@ public class ClientServiceIpml implements ClientService {
         client.setCpf(clientRequest.getCpf());
         client.setEmail(clientRequest.getEmail());
         client.setAddress(clientRequest.getAddress());
-        client.setCell(clientRequest.getCell());
+        client.setPhone(clientRequest.getPhone());
 
         return clientRepository.save(client);
     }

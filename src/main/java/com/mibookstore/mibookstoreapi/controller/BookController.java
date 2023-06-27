@@ -3,7 +3,6 @@ package com.mibookstore.mibookstoreapi.controller;
 import com.mibookstore.mibookstoreapi.model.Book;
 import com.mibookstore.mibookstoreapi.model.dto.BookRequest;
 import com.mibookstore.mibookstoreapi.service.BookService;
-import com.mibookstore.mibookstoreapi.service.ipml.BookServiceIpml;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
