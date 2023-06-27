@@ -3,25 +3,25 @@
 </h3>
 
 <p align="center">
-  <a href="#description">Description</a> |
-  <a href="#technology">Technology</a> |
-  <a href="#prerequisites">Prerequisites</a> |
-  <a href="#getting-started">Getting started</a>
+  <a href="#book-description">Description</a> |
+  <a href="#rocket-technology">Technology</a> |
+  <a href="#ballot_box_with_check-prerequisites">Prerequisites</a> |
+  <a href="#up-getting-started">Getting started</a>
 </p>
 
-## [](#description)📖 Description
+## [](#description):book: Description
 <p>
 This project is a backend API for an online bookstore, where you can do CRUD operations for books, customers and shopping carts.</p>
 
-## [](#technology)🚀 Technology
+## [](#technology):rocket: Technology
 - Java
 - Spring Framework
 - InteliJ IDEA
 
-## [](#prerequisites)☑️ Prerequisites
+## [](#prerequisites):ballot_box_with_check: Prerequisites
 -   [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)
 
-## [](#getting-started)🆙 Getting started
+## [](#getting-started):up: Getting started
 
 -  Clone this repo
 
