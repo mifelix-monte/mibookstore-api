@@ -25,11 +25,11 @@ This project is a backend API for an online bookstore, where you can do CRUD ope
 
 ## [](#getting-started):up: Getting started
 
--  Clone this repo
--  cd cloned_folder
--  mvn clean install
--  mvn spring-boot:run
-
+- Clone this repo
+- cd cloned_folder
+- mvn clean install
+- mvn spring-boot:run
+- open swagger on your browser (http://localhost:8080/swagger-ui/index.html)
 ----------
 
 Made with 💙 by mifelix-monte  👋  [Get in touch!](https://www.linkedin.com/in/michele-monteiro-036750103/)

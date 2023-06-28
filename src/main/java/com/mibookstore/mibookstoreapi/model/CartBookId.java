@@ -1,9 +1,8 @@
 package com.mibookstore.mibookstoreapi.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import lombok.Data;
-import lombok.Getter;
 
 import java.io.Serializable;
 import java.util.Objects;

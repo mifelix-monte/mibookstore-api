@@ -1,6 +1,13 @@
 package com.mibookstore.mibookstoreapi.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +18,6 @@ import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name = "cart_books")
 public class CartBook {
 
     @EmbeddedId
