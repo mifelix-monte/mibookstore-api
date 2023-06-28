@@ -22,9 +22,6 @@ public class BookController {
 
     @Autowired
     BookService bookService;
-
-
-
     @PostMapping
     @ApiOperation(value = "Create an instance of book")
     public ResponseEntity<Book> createBook(@Valid @RequestBody BookRequest bookRequest){
@@ -41,7 +38,7 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    @ApiOperation(value = "Return the book according to the id")
+    @ApiOperation(value = "Return a book according to the id")
     public ResponseEntity<Book> getById(@PathVariable Integer id){
 
         return ResponseEntity.ok(bookService.getById(id));
